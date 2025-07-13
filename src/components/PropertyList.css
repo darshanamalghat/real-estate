@@ -1,0 +1,80 @@
+.property-list-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 2rem 1rem;
+  background-color: #f8f9fa;
+}
+
+.property-list-container h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #7B5AA0;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.property-list-container h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #5a4277;
+  margin: 0.5rem auto 0;
+  border-radius: 10px;
+}
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.property-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.property-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.property-card:hover img {
+  transform: scale(1.03);
+}
+
+.property-card h3 {
+  font-size: 1.2rem;
+  color: #222;
+  margin: 1rem 1rem 0.3rem;
+  font-weight: 600;
+}
+
+.property-card p {
+  margin: 0 1rem 0.8rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.property-card .price {
+  margin-top: auto;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  font-weight: bold;
+  color: #7B5AA0;
+  font-size: 1rem;
+}

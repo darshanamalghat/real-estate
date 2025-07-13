@@ -1,0 +1,163 @@
+
+/* About Section Wrapper */
+.about-section {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
+}
+
+.about-slideshow {
+  position: relative;
+  height: 550px;
+  overflow: hidden;
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fade 1s ease-in-out;
+}
+
+
+@keyframes fade {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Overlay text on hero image */
+.about-overlay {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: #fff;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.about-overlay h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  animation: fadeInDown 1s ease forwards;
+}
+
+.about-overlay p {
+  font-size: 1.3rem;
+  font-weight: 400;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Main content */
+.about-content {
+  padding: 60px 10%;
+  background: #fff;
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  color: #7B5AA0;
+  margin-top: 40px;
+  position: relative;
+}
+
+.about-content h2::after {
+  content: '';
+  width: 60px;
+  height: 3px;
+  background: #7B5AA0;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 15px 0;
+}
+
+.about-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.about-content ul li {
+  margin: 10px 0;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Image Gallery */
+.about-gallery {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.about-gallery img {
+  width: calc(33.333% - 13.33px);
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  height: 220px;
+}
+
+.about-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .about-overlay p {
+    font-size: 1rem;
+  }
+
+  .about-gallery {
+    flex-direction: column;
+  }
+
+  .about-gallery img {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-content {
+    padding: 40px 5%;
+  }
+}
