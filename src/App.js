@@ -1,132 +1,73 @@
-// import React, { useRef, useState } from "react";
-// import Header from "./components/Header";
-// import PropertyList from "./components/PropertyList";
-// import ContactForm from "./components/ContactForm";
-// import Footer from "./components/Footer";
-// import About from "./components/About";
-// import "./App.css";
+import React, { useState, useEffect } from "react";
+import "./About.css";
 
-// function App() {
-//   const [page, setPage] = useState("home");
+const slides = [
+  {
+    image: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1600&q=80",
+    heading: "NextGen Reality Estate",
+    caption: "Empowering Land Investments with Trust & Transparency",
+  },
+  
+  {
+    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1600&q=80",
+    heading: "Build Your Dream",
+    caption: "Residential, Commercial & Investment Opportunities",
+  },
+];
 
-//   const propertyRef = useRef(null); // For scroll reference
+const About = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-//   const renderPage = () => {
-//     switch (page) {
-//       case "home":
-//         return (
-//           <>
-//             <Header onExploreClick={() => propertyRef.current?.scrollIntoView({ behavior: "smooth" })} />
-//             <div ref={propertyRef}>
-//               <PropertyList />
-//             </div>
-//           </>
-//         );
-//       case "properties":
-//         return <PropertyList />;
-//       case "about":
-//         return <About />;
-//       case "contact":
-//         return <ContactForm />;
-//       default:
-//         return <Header />;
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <nav className="navbar">
-//         <div className="logo" onClick={() => setPage("home")}>
-//           <img src="/assets/NextGen Reality-logo-transparent.png" alt="NextGen" className="logo-img" />
-//         </div>
-//         <ul>
-//           <li onClick={() => setPage("home")}>Home</li>
-//           <li onClick={() => setPage("properties")}>Properties</li>
-//           <li onClick={() => setPage("about")}>About Us</li>
-//           <li onClick={() => setPage("contact")}>Contact</li>
-//         </ul>
-//       </nav>
-//       {renderPage()}
-//       <Footer />
-//     </div>
-//   );
-// }
-
-// export default App;
-////////////////////////////////////////////////
-
-import React, { useRef, useState } from "react";
-import Header from "./components/Header";
-import PropertyList from "./components/PropertyList";
-import ContactForm from "./components/ContactForm";
-import Footer from "./components/Footer";
-import About from "./components/About";
-import "./App.css";
-
-function App() {
-  const [page, setPage] = useState("home");
-  const [showNavbar, setShowNavbar] = useState(true); // new state
-  const propertyRef = useRef(null);
-
-  const handleNavClick = (targetPage) => {
-    setPage(targetPage);
-    setShowNavbar(false); // hide navbar on link click
-  };
-
-  const renderPage = () => {
-    switch (page) {
-      case "home":
-        return (
-          <>
-            <Header
-              onExploreClick={() =>
-                propertyRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-            />
-            <div ref={propertyRef}>
-              <PropertyList />
-            </div>
-          </>
-        );
-      case "properties":
-        return <PropertyList />;
-      case "about":
-        return <About />;
-      case "contact":
-        return <ContactForm />;
-      default:
-        return <Header />;
-    }
-  };
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div>
-      {showNavbar && (
-        <nav className="navbar">
-          <div className="logo" onClick={() => handleNavClick("home")}>
-            <img src="/assets/NextGen Reality-logo-transparent.png" alt="NextGen" className="logo-img" />
-          </div>
-          <div className="nav1">
-          <ul>
-            <li onClick={() => handleNavClick("home")}>Home</li>
-            <li onClick={() => handleNavClick("properties")}>Properties</li>
-            <li onClick={() => handleNavClick("about")}>About Us</li>
-            <li onClick={() => handleNavClick("contact")}>Contact</li>
-          </ul>
-          </div>
-         <div className="enquiry-box">
-  Enquiry Now: <a href="tel:7046564456">7046564456</a>
-</div>
+    <section className="about-section">
+      {/* Slideshow */}
+      <div className="about-slideshow">
+        <img
+          src={slides[currentSlide].image}
+          alt="About Slide"
+          className="slide-img"
+        />
+        <div className="about-overlay">
+          <h1>{slides[currentSlide].heading}</h1>
+          <p>{slides[currentSlide].caption}</p>
+        </div>
+      </div>
 
-        </nav>
-      )}
+      {/* Keep your existing content below */}
+      <div className="about-content">
+        <h2>Who We Are</h2>
+        <p>
+          At <strong>NextGen Reality Estate</strong>, we believe land is more than just a space —
+          it's your future...
+        </p>
 
-      {renderPage()}
+        <h2>Our Mission</h2>
+        <p>We aim to redefine the real estate experience...</p>
 
-      <Footer />
-    </div>
+        <h2>Why Choose Us?</h2>
+        <ul>
+          <li>✅ 100% Verified Clear-Title Plots</li>
+          <li>✅ Strategic Locations across Nagpur & Maharashtra</li>
+          <li>✅ Transparent Process — No Hidden Charges</li>
+          <li>✅ Trusted by 1000+ Happy Clients</li>
+        </ul>
+
+        <div className="about-gallery">
+          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="Investment Land" />
+          <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80" alt="Location View" />
+          <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&w=1600&q=80" alt="Flat Land" />
+        </div>
+      </div>
+    </section>
   );
-}
+};
 
-export default App;
-
+export default About;
